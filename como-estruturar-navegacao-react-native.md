@@ -1,5 +1,5 @@
 ---
-title: "Como estruturar a navegação em apps React Native"
+title: "Como Estruturar a Navegação em Apps React Native"
 description: "Um guia prático sobre como organizar a navegação do seu app usando React Navigation, com exemplos reais de Stack, Tab e Drawer."
 date: "2026-04-02"
 tags: ["react native", "react navigation", "mobile"]
