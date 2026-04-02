@@ -35,7 +35,7 @@ npm install @react-navigation/drawer
 
 Before writing code, I like to separate navigation into dedicated files:
 
-```
+```plaintext
 src/
   navigation/
     AppNavigator.tsx     # root navigator
