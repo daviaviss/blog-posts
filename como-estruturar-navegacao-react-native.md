@@ -35,7 +35,7 @@ npm install @react-navigation/drawer
 
 Antes de escrever código, gosto de separar a navegação em arquivos dedicados:
 
-```plaintext
+```text
 src/
   navigation/
     AppNavigator.tsx     # navegador raiz
