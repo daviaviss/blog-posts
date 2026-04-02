@@ -1,39 +1,39 @@
 ---
-title: "como estruturar a navegação em apps react native"
-description: "um guia prático sobre como organizar a navegação do seu app usando react navigation, com exemplos reais de stack, tab e drawer."
+title: "Como estruturar a navegação em apps React Native"
+description: "Um guia prático sobre como organizar a navegação do seu app usando React Navigation, com exemplos reais de Stack, Tab e Drawer."
 date: "2026-04-02"
 tags: ["react native", "react navigation", "mobile"]
 ---
 
-a navegação é um dos pilares de qualquer aplicativo mobile. uma estrutura bem pensada desde o início evita retrabalho e facilita a manutenção. neste artigo vou mostrar como organizo a navegação nos meus projetos com react native.
+A navegação é um dos pilares de qualquer aplicativo mobile. Uma estrutura bem pensada desde o início evita retrabalho e facilita a manutenção. Neste artigo vou mostrar como organizo a navegação nos meus projetos com React Native.
 
-## por que react navigation?
+## Por que React Navigation?
 
-o [react navigation](https://reactnavigation.org/) é a biblioteca mais consolidada para navegação em react native. ela suporta os principais padrões de navegação mobile — stack, tab e drawer — e se integra bem tanto com expo quanto com projetos bare.
+O [React Navigation](https://reactnavigation.org/) é a biblioteca mais consolidada para navegação em React Native. Ela suporta os principais padrões de navegação mobile — Stack, Tab e Drawer — e se integra bem tanto com Expo quanto com projetos bare.
 
-## instalação
+## Instalação
 
 ```bash
 npm install @react-navigation/native
 npm install react-native-screens react-native-safe-area-context
 ```
 
-para cada tipo de navegador, instale o pacote específico:
+Para cada tipo de navegador, instale o pacote específico:
 
 ```bash
-# stack
+# Stack
 npm install @react-navigation/native-stack
 
-# tabs
+# Tabs
 npm install @react-navigation/bottom-tabs
 
-# drawer
+# Drawer
 npm install @react-navigation/drawer
 ```
 
-## estrutura de pastas
+## Estrutura de pastas
 
-antes de escrever código, gosto de separar a navegação em arquivos dedicados:
+Antes de escrever código, gosto de separar a navegação em arquivos dedicados:
 
 ```
 src/
@@ -43,11 +43,11 @@ src/
     MainNavigator.tsx    # fluxo principal (tabs)
 ```
 
-essa separação facilita muito quando o app cresce e você precisa proteger rotas ou adicionar lógica de autenticação.
+Essa separação facilita muito quando o app cresce e você precisa proteger rotas ou adicionar lógica de autenticação.
 
-## navegador raiz
+## Navegador raiz
 
-o `AppNavigator` decide qual fluxo exibir com base no estado de autenticação:
+O `AppNavigator` decide qual fluxo exibir com base no estado de autenticação:
 
 ```tsx
 import { NavigationContainer } from '@react-navigation/native';
@@ -75,9 +75,9 @@ export default function AppNavigator() {
 }
 ```
 
-## tabs com stack dentro
+## Tabs com Stack dentro
 
-um padrão muito comum é ter tabs na parte inferior, e dentro de cada tab um stack próprio para navegação em profundidade:
+Um padrão muito comum é ter tabs na parte inferior, e dentro de cada tab um Stack próprio para navegação em profundidade:
 
 ```tsx
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -108,9 +108,9 @@ export default function MainNavigator() {
 }
 ```
 
-## tipagem com typescript
+## Tipagem com TypeScript
 
-tipar a navegação evita bugs difíceis de rastrear. crie um arquivo `types.ts` centralizando todos os params:
+Tipar a navegação evita bugs difíceis de rastrear. Crie um arquivo `types.ts` centralizando todos os params:
 
 ```ts
 export type RootStackParamList = {
@@ -124,7 +124,7 @@ export type HomeStackParamList = {
 };
 ```
 
-e use nos seus componentes:
+E use nos seus componentes:
 
 ```tsx
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -138,10 +138,10 @@ export default function DetailsScreen({ route, navigation }: Props) {
 }
 ```
 
-## dicas finais
+## Dicas finais
 
-- **evite navegar pelo estado global** — passe a navegação via props ou use o hook `useNavigation`
-- **nomeie as rotas como constantes** — evita typos e facilita refatorações
-- **use `screenOptions` no navigator** — centralize estilos de header em vez de repetir em cada tela
+- **Evite navegar pelo estado global** — passe a navegação via props ou use o hook `useNavigation`
+- **Nomeie as rotas como constantes** — evita typos e facilita refatorações
+- **Use `screenOptions` no navigator** — centralize estilos de header em vez de repetir em cada tela
 
-uma boa estrutura de navegação é invisível para o usuário, mas faz toda a diferença para quem desenvolve. espero que esse guia ajude nos seus projetos!
+Uma boa estrutura de navegação é invisível para o usuário, mas faz toda a diferença para quem desenvolve. Espero que esse guia ajude nos seus projetos!
